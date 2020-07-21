@@ -1,0 +1,12 @@
+$color-pink: #ff65af;
+$border-color: rgba(200, 200, 200, .5);
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@function px2rem($px) {
+  @return ($px / 100) * 1rem;
+}

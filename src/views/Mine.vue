@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <Header title="一小时达" />
+  <div class="mine">
+    <Header title="我的信息" />
   </div>
 </template>
 
@@ -8,9 +8,10 @@
 import Header from "../components/common/Header";
 
 export default {
-  name: "Home",
   components: {
     Header
   }
 };
 </script>
+
+<style lang="scss" scoped></style>

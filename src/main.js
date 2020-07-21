@@ -3,6 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+// 配置rem
+import { remConfig } from "./config/remConfig";
+remConfig(100, 375);
+
 Vue.config.productionTip = false;
 
 new Vue({
