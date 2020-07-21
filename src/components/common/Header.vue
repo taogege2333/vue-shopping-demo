@@ -35,12 +35,16 @@ export default {
 @import "../../assets/styles/index.scss";
 @import "../../assets/iconfont/iconfont.css";
 .header {
-  width: 100%;
+  width: 100vw;
   height: px2rem(48);
   border-bottom: 1px solid $border-color;
   font-size: px2rem(20);
   @include center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  background-color: #fff;
   .back {
     position: absolute;
     top: 0;

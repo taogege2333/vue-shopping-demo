@@ -50,7 +50,7 @@ export default {
 @import "../../assets/styles/index.scss";
 @import "../../assets/iconfont/iconfont.css";
 .tabbar {
-  width: 100%;
+  width: 100vw;
   height: px2rem(60);
   position: fixed;
   bottom: 0;
