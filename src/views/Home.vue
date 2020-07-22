@@ -4,11 +4,10 @@
     <MainContent>
       <GoodsNav
         :list="goodsNavList"
-        :defaultActive="activeId"
-        k="id"
+        :defaultActive="activeItem"
         @changeItem="onNavItemClick"
       />
-      <GoodsList />
+      <GoodsList :goodsList="goodsList" />
     </MainContent>
   </div>
 </template>
@@ -18,6 +17,7 @@ import Header from "../components/common/Header";
 import MainContent from "../components/common/MainContent";
 import GoodsNav from "../components/home/GoodsNav";
 import GoodsList from "../components/home/GoodsList";
+import { getHomeData } from "../api/index.js";
 
 export default {
   name: "Home",
@@ -29,23 +29,32 @@ export default {
   },
   data() {
     return {
-      goodsNavList: [
-        {id: "0", name: "所有"},
-        {id: "1", name: "水果"},
-        {id: "2", name: "蔬菜"},
-        {id: "3", name: "肉蛋"},
-        {id: "4", name: "速冻"},
-        {id: "5", name: "酒饮"},
-        {id: "6", name: "乳品"},
-        {id: "7", name: "零食"},
-      ],
-      activeId: "0"
+      goodsNavList: [],
+      goodsList: [],
+      allGoods: [],
+      activeItem: "所有"
     }
   },
   methods: {
-    onNavItemClick(k) {
-      this.activeId = k;
+    onNavItemClick(item) {
+      this.activeItem = item;
+      if(item === "所有") {
+        this.goodsList = this.allGoods;
+      } else {
+        this.goodsList = this.allGoods.filter(goods => {
+          return goods.type === item;
+        });
+      }
     }
+  },
+  mounted() {
+    getHomeData().then(res => {
+      if(res.code === 1) {
+        this.allGoods = this.goodsList = res.result.goodsList;
+        this.goodsNavList = res.result.goodsTypeList;
+        this.goodsNavList.unshift("所有");
+      }
+    })
   }
 };
 </script>

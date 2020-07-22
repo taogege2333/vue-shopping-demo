@@ -10,6 +10,7 @@
         <router-link :to="item.path">
           <i class="iconfont" v-html="item.icon"></i>
           {{item.text}}
+          <i class="label" v-show="item.text === '购物车'">6</i>
         </router-link>
       </li>
     </ul>
@@ -65,6 +66,18 @@ export default {
     .tabbar-list-item {
       flex-grow: 1;
       height: 100%;
+      position: relative;
+      .label {
+        position: absolute;
+        top: 0;
+        right: px2rem(40);
+        width: px2rem(24);
+        height: px2rem(18);
+        border-radius: px2rem(9);
+        background-color: $color-pink;
+        color: #fff;
+        @include center;
+      }
       a {
         width: 100%;
         height: 100%;

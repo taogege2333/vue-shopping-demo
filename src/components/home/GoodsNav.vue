@@ -3,12 +3,12 @@
     <ul class="goods-nav-list">
       <li
         class="nav-list-item"
-        :class="defaultActive === item[k] ? 'active' : ''"
+        :class="defaultActive === key(item) ? 'active' : ''"
         v-for="item in list"
-        :key="item[k]"
-        @click="onItemClick(item[k])"
+        :key="key(item)"
+        @click="onItemClick(key(item))"
       >
-        {{item.name}}
+        {{show(item)}}
       </li>
     </ul>
   </nav>
@@ -27,13 +27,27 @@ export default {
     },
     k: {
       type: [String, Number],
-      default: "id",
+    },
+    s: {
+      type: [String, Number],
     }
   },
   methods: {
     onItemClick(k) {
       this.$emit("changeItem", k);
     }
+  },
+  computed: {
+    key() {
+      return function (item) {
+        return this.k ? item[this.k] : item;
+      }
+    },
+    show() {
+      return function (item) {
+        return this.s ? item[this.s] : item;
+      }
+    },
   }
 };
 </script>
@@ -44,13 +58,13 @@ export default {
   width: 100vw;
   height: px2rem(44);
   position: fixed;
-  top: px2rem(49);
+  top: px2rem(48);
   left: 0;
   z-index: 500;
   padding: 0 px2rem(20);
   box-sizing: border-box;
   background-color: #f5f7fa;
-  box-shadow: 0 0 4px 1px #ccc;
+  box-shadow: 0 1px 4px 0 #ccc;
   .goods-nav-list {
     width: 100%;
     height: 100%;
