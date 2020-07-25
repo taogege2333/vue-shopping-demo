@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <TabBar />
   </div>
 </template>
@@ -17,4 +19,8 @@ export default {
 
 <style lang="scss">
 @import "./assets/styles/index.scss";
+body {
+  font-size: px2rem(14);
+  color: #333;
+}
 </style>

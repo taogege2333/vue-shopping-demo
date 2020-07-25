@@ -1,5 +1,9 @@
 <template>
-  <main class="content-wrapper" :style="{paddingTop: pxToRem(top), paddingBottom: pxToRem(bottom)}">
+  <main
+    class="content-wrapper"
+    :class="center ? 'center' : ''"
+    :style="{paddingTop: pxToRem(top), paddingBottom: pxToRem(bottom)}"
+  >
     <slot />
   </main>
 </template>
@@ -16,6 +20,10 @@ export default {
     bottom: {
       type: [String, Number],
       default: "60"
+    },
+    center: {
+      type: Boolean,
+      default: false
     }
   },
   mixins: [commonMixin]
@@ -25,6 +33,11 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/styles/index.scss";
 .content-wrapper {
+  min-height: 100vh;
   padding: px2rem(49) 0 px2rem(60);
+  box-sizing: border-box;
+  &.center {
+    @include center;
+  }
 }
 </style>

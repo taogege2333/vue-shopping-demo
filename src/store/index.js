@@ -5,7 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart: []
+    cart: [],
+    user: {} // {username: "王小明"}
+  },
+  getters: {
+    cart(state) {
+      return state.cart;
+    },
+    user(state) {
+      return state.user;
+    }
   },
   mutations: {
     "ADD_GOODS"(state, goods) {
@@ -35,6 +44,9 @@ export default new Vuex.Store({
           state.cart.splice(index, 1);
         }
       }
+    },
+    "SET_USER"(state, user) {
+      state.user = user;
     }
   },
   actions: {
@@ -43,6 +55,9 @@ export default new Vuex.Store({
     },
     reduceGoods({commit}, id) {
       commit("REDUCE_GOODS", id);
+    },
+    setUser({commit}, user) {
+      commit("SET_USER", user);
     }
   },
 });

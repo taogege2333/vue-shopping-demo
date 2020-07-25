@@ -15,8 +15,11 @@
       <div class="detail-introduce">{{detail.introduce}}</div>
     </MainContent>
     <div class="detail-bottom">
-      <div class="detail-bottom-cart iconfont">&#xe61d;</div>
-      <div class="detail-bottom-add">加入购物车</div>
+      <div class="detail-bottom-cart iconfont" @click="goCart">
+        &#xe61d;
+        <i class="label" v-show="getAllGoodsNumInCart > 0">{{getAllGoodsNumInCart}}</i>
+      </div>
+      <div class="detail-bottom-add" @click="handleAddGoods">加入购物车</div>
     </div>
   </div>
 </template>
@@ -36,6 +39,14 @@ export default {
   data() {
     return {
       detail: {}
+    }
+  },
+  methods: {
+    handleAddGoods() {
+      this.addGoods(this.detail);
+    },
+    goCart() {
+      this.$router.push("/cart");
     }
   },
   mounted() {
@@ -98,6 +109,19 @@ export default {
       flex-basis: px2rem(75);
       font-size: px2rem(26);
       @include center;
+      position: relative;
+      .label {
+        position: absolute;
+        top: px2rem(10);
+        right: px2rem(14);
+        width: px2rem(24);
+        height: px2rem(18);
+        border-radius: px2rem(9);
+        background-color: $color-pink;
+        color: #fff;
+        font-size: px2rem(14);
+        @include center;
+      }
     }
     .detail-bottom-add {
       flex: 1;

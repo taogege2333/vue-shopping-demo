@@ -10,7 +10,7 @@
         <router-link :to="item.path">
           <i class="iconfont" v-html="item.icon"></i>
           {{item.text}}
-          <i class="label" v-show="item.text === '购物车'">6</i>
+          <i class="label" v-show="item.text === '购物车' && getAllGoodsNumInCart > 0">{{getAllGoodsNumInCart}}</i>
         </router-link>
       </li>
     </ul>
@@ -18,7 +18,10 @@
 </template>
 
 <script>
+import { commonMixin } from "../../mixins/index";
+
 export default {
+  mixins: [commonMixin],
   data() {
     return {
       list: [

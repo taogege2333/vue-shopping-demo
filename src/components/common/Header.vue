@@ -43,7 +43,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 500;
+  z-index: 1000;
   background-color: #fff;
   .back {
     position: absolute;

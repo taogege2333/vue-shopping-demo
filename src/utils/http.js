@@ -1,4 +1,5 @@
 import axios from "axios";
+import qs from "qs";
 
 class Http {
   constructor() {
@@ -18,7 +19,7 @@ class Http {
     return this.axios.get(url, {params: data});
   }
   post(url, data = {}) {
-    return this.axios.post(url, data);
+    return this.axios.post(url, qs.stringify(data));
   }
 }
 

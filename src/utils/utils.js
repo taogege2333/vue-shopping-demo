@@ -10,3 +10,7 @@ export const throttle = (fn, delay) => {
     }, delay);
   }
 }
+export const realPx = px => {
+  const screenWidth = document.documentElement.clientWidth;
+  return px * screenWidth / 375;
+}
