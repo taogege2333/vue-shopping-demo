@@ -9,7 +9,7 @@
         </div>
         <Price />
         <div class="bottom">
-          <div class="settle">去结算</div>
+          <div class="settle" @click="$router.push('/settlement')">去结算</div>
         </div>
       </div>
     </MainContent>

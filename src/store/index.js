@@ -5,7 +5,26 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart: [],
+    cart: [
+      {
+        id: "0",
+        name: "我是水果1",
+        introduce: "我是苹果1的介绍我是苹果1的介绍我是苹果1的介绍我是苹果1的介绍我是苹果1的介绍我是苹果1的介绍",
+        price: 12.00,
+        image: "/image/水果.png",
+        type: "水果",
+        num: 3
+      },
+      {
+        id: "1",
+        name: "我是水果2",
+        introduce: "我是苹果2的介绍我是苹果2的介绍我是苹果2的介绍我是苹果2的介绍我是苹果2的介绍我是苹果2的介绍",
+        price: 18.00,
+        image: "/image/水果2.png",
+        type: "水果",
+        num: 10
+      },
+    ],
     user: {} // {username: "王小明"}
   },
   getters: {
@@ -47,6 +66,9 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
+    },
+    CLEAR_CART(state) {
+      state.cart = [];
     }
   },
   actions: {
@@ -58,6 +80,9 @@ export default new Vuex.Store({
     },
     setUser({ commit }, user) {
       commit("SET_USER", user);
+    },
+    clearCart({ commit }) {
+      commit("CLEAR_CART");
     }
   }
 });

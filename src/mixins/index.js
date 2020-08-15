@@ -8,13 +8,15 @@ export const commonMixin = {
     }
   },
   methods: {
-    ...mapActions(["addGoods", "reduceGoods", "setUser"]),
+    ...mapActions(["addGoods", "reduceGoods", "setUser", "clearCart"]),
+    // 将设计稿的px转换成rem
     pxToRem(px) {
       return parseInt(px) / 100 + "rem";
     }
   },
   computed: {
     ...mapGetters(["cart", "user"]),
+    // 获取在购物车中所有商品的数量
     getAllGoodsNumInCart() {
       let num = 0;
       for (let item of this.cart) {
@@ -22,6 +24,7 @@ export const commonMixin = {
       }
       return num;
     },
+    // 购物车中商品总价
     totalPrice() {
       let price = 0;
       for (let goods of this.cart) {
@@ -29,6 +32,7 @@ export const commonMixin = {
       }
       return price;
     },
+    // 计算运费
     freightMoney() {
       if (this.totalPrice >= FREIGHT_LIMIT) {
         return 0;
@@ -36,6 +40,7 @@ export const commonMixin = {
         return FREIGHT_MONEY;
       }
     },
+    // 计算应支付的金额
     payment() {
       return this.totalPrice + this.freightMoney;
     }

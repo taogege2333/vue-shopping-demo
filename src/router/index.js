@@ -38,6 +38,10 @@ const routes = [
     path: "/address/edit/:id",
     name: "editAddress",
     component: () => import("../views/EditAddress.vue")
+  },
+  {
+    path: "/settlement",
+    component: () => import("../views/Settlement.vue")
   }
 ];
 

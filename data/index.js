@@ -126,12 +126,12 @@ exports.addressList = [
     id: "1",
     receiver: "王小明",
     phone: "13566660099",
-    address: "北京市朝阳区朝阳北路111号"
+    address: "北京市朝阳区朝阳北路111号",
   },
   {
     id: "2",
     receiver: "李莉莉",
     phone: "18522330011",
-    address: "广州天河区花城大道111号"
+    address: "广州天河区花城大道111号",
   }
 ]
