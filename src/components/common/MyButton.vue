@@ -1,10 +1,6 @@
 <template>
-  <button
-    class="my-btn"
-    :style="style"
-    @click="btnClickFunc"
-  >
-    {{text}}
+  <button class="my-btn" :style="style" @click="btnClickFunc">
+    {{ text }}
   </button>
 </template>
 
@@ -35,13 +31,13 @@ export default {
     },
     btnClickFunc: {
       type: Function,
-      default: function () {}
+      default: function() {}
     }
   },
   data() {
     return {
       style: {}
-    }
+    };
   },
   methods: {
     propStyle() {
@@ -50,7 +46,7 @@ export default {
         color: this.color,
         backgroundColor: this.bgColor,
         border: this.border ? "1px solid #cdcdcd" : "none"
-      }
+      };
     },
     onResize() {
       this.style = this.propStyle();

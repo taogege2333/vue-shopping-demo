@@ -8,7 +8,7 @@
         :key="key(item)"
         @click="onItemClick(key(item))"
       >
-        {{show(item)}}
+        {{ show(item) }}
       </li>
     </ul>
   </nav>
@@ -26,10 +26,10 @@ export default {
       required: true
     },
     k: {
-      type: [String, Number],
+      type: [String, Number]
     },
     s: {
-      type: [String, Number],
+      type: [String, Number]
     }
   },
   methods: {
@@ -39,15 +39,15 @@ export default {
   },
   computed: {
     key() {
-      return function (item) {
+      return function(item) {
         return this.k ? item[this.k] : item;
-      }
+      };
     },
     show() {
-      return function (item) {
+      return function(item) {
         return this.s ? item[this.s] : item;
-      }
-    },
+      };
+    }
   }
 };
 </script>

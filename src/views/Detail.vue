@@ -1,23 +1,25 @@
 <template>
   <div class="detail">
-    <Header title="商品详情" showBack />
+    <Header title="商品详情" showBack to="/" />
     <MainContent bottom="62">
       <div class="detail-image">
-        <img :src="detail.image" :alt="detail.name">
+        <img :src="detail.image" :alt="detail.name" />
       </div>
       <div class="detail-card">
-        <p class="detail-card-name">{{detail.name}}</p>
+        <p class="detail-card-name">{{ detail.name }}</p>
         <p class="detail-card-money">
           <span>￥</span>
-          <span class="number">{{detail.price || 0 | formatPrice}}</span>
+          <span class="number">{{ detail.price || 0 | formatPrice }}</span>
         </p>
       </div>
-      <div class="detail-introduce">{{detail.introduce}}</div>
+      <div class="detail-introduce">{{ detail.introduce }}</div>
     </MainContent>
     <div class="detail-bottom">
       <div class="detail-bottom-cart iconfont" @click="goCart">
         &#xe61d;
-        <i class="label" v-show="getAllGoodsNumInCart > 0">{{getAllGoodsNumInCart}}</i>
+        <i class="label" v-show="getAllGoodsNumInCart > 0">{{
+          getAllGoodsNumInCart
+        }}</i>
       </div>
       <div class="detail-bottom-add" @click="handleAddGoods">加入购物车</div>
     </div>
@@ -39,7 +41,7 @@ export default {
   data() {
     return {
       detail: {}
-    }
+    };
   },
   methods: {
     handleAddGoods() {
@@ -52,10 +54,10 @@ export default {
   mounted() {
     const id = this.$route.query.id;
     getDetail(id).then(res => {
-      if(res.code === 1) {
+      if (res.code === 1) {
         this.detail = res.result;
       }
-    })
+    });
   }
 };
 </script>

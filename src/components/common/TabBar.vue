@@ -9,8 +9,12 @@
       >
         <router-link :to="item.path">
           <i class="iconfont" v-html="item.icon"></i>
-          {{item.text}}
-          <i class="label" v-show="item.text === '购物车' && getAllGoodsNumInCart > 0">{{getAllGoodsNumInCart}}</i>
+          {{ item.text }}
+          <i
+            class="label"
+            v-show="item.text === '购物车' && getAllGoodsNumInCart > 0"
+            >{{ getAllGoodsNumInCart }}</i
+          >
         </router-link>
       </li>
     </ul>
@@ -25,23 +29,23 @@ export default {
   data() {
     return {
       list: [
-        {path: "/", text: "首页", icon: "&#xe615;"},
-        {path: "/cart", text: "购物车", icon: "&#xe674;"},
-        {path: "/mine", text: "我的", icon: "&#xe718;"}
+        { path: "/", text: "首页", icon: "&#xe615;" },
+        { path: "/cart", text: "购物车", icon: "&#xe674;" },
+        { path: "/mine", text: "我的", icon: "&#xe718;" }
       ],
       activeIndex: 0
-    }
+    };
   },
   watch: {
-    "$route"(newRoute) {
-      switch(newRoute.path) {
-        case "/" :
+    $route(newRoute) {
+      switch (newRoute.path) {
+        case "/":
           this.activeIndex = 0;
           break;
-        case "/cart" :
+        case "/cart":
           this.activeIndex = 1;
           break;
-        case "/mine" :
+        case "/mine":
           this.activeIndex = 2;
           break;
       }
@@ -60,7 +64,7 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 500;
-  box-shadow: 0 0 6px 1px rgba(200, 200, 200, .5);
+  box-shadow: 0 0 6px 1px rgba(200, 200, 200, 0.5);
   background-color: #fff;
   .tabbar-list {
     width: 100%;

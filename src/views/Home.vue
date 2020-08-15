@@ -33,12 +33,12 @@ export default {
       goodsList: [],
       allGoods: [],
       activeItem: "所有"
-    }
+    };
   },
   methods: {
     onNavItemClick(item) {
       this.activeItem = item;
-      if(item === "所有") {
+      if (item === "所有") {
         this.goodsList = this.allGoods;
       } else {
         this.goodsList = this.allGoods.filter(goods => {
@@ -49,12 +49,12 @@ export default {
   },
   mounted() {
     getHomeData().then(res => {
-      if(res.code === 1) {
+      if (res.code === 1) {
         this.allGoods = this.goodsList = res.result.goodsList;
         this.goodsNavList = res.result.goodsTypeList;
         this.goodsNavList.unshift("所有");
       }
-    })
+    });
   }
 };
 </script>

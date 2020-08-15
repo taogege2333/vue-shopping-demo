@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view />
-    </keep-alive>
+    <router-view />
     <TabBar />
   </div>
 </template>
 
 <script>
-import TabBar from './components/common/TabBar';
+import TabBar from "./components/common/TabBar";
+import { commonMixin } from "./mixins/index.js";
 
 export default {
+  mixins: [commonMixin],
   components: {
     TabBar
+  },
+  mounted() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user.id) {
+      this.setUser(user);
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">

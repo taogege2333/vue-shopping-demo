@@ -17,47 +17,47 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    "ADD_GOODS"(state, goods) {
+    ADD_GOODS(state, goods) {
       let index = null;
-      for(let i in state.cart) {
-        if(state.cart[i].id === goods.id) {
+      for (let i in state.cart) {
+        if (state.cart[i].id === goods.id) {
           index = i;
         }
       }
-      if(index) {
+      if (index) {
         state.cart[index].num++;
       } else {
-        state.cart.push(Object.assign({}, goods, {num: 1}));
+        state.cart.push(Object.assign({}, goods, { num: 1 }));
       }
     },
-    "REDUCE_GOODS"(state, id) {
+    REDUCE_GOODS(state, id) {
       let index = null;
-      for(let i in state.cart) {
-        if(state.cart[i].id === id) {
+      for (let i in state.cart) {
+        if (state.cart[i].id === id) {
           index = i;
         }
       }
-      if(index) {
-        if(state.cart[index].num > 1) {
+      if (index) {
+        if (state.cart[index].num > 1) {
           state.cart[index].num--;
         } else {
           state.cart.splice(index, 1);
         }
       }
     },
-    "SET_USER"(state, user) {
+    SET_USER(state, user) {
       state.user = user;
     }
   },
   actions: {
-    addGoods({commit}, goods) {
+    addGoods({ commit }, goods) {
       commit("ADD_GOODS", goods);
     },
-    reduceGoods({commit}, id) {
+    reduceGoods({ commit }, id) {
       commit("REDUCE_GOODS", id);
     },
-    setUser({commit}, user) {
+    setUser({ commit }, user) {
       commit("SET_USER", user);
     }
-  },
+  }
 });

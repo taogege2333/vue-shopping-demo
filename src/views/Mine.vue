@@ -4,7 +4,12 @@
     <MainContent center>
       <MyButton
         class="login-btn"
-        v-bind="{text: '登录', bgColor: '#67c23a', color: '#fff', btnClickFunc: goLogin}"
+        v-bind="{
+          text: '登录',
+          bgColor: '#67c23a',
+          color: '#fff',
+          btnClickFunc: goLogin
+        }"
         v-if="!user.username"
       />
       <User v-else />
@@ -38,6 +43,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/index.scss";
 .mine {
-  .login-btn {}
+  .login-btn {
+  }
 }
 </style>

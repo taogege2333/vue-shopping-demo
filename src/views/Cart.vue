@@ -5,11 +5,7 @@
       <p class="tips" v-if="this.cart.length === 0">你还没有添加任何商品哦~</p>
       <div class="wrapper" v-else>
         <div class="goods-wrapper">
-          <GoodsItem 
-            v-for="item in this.cart"
-            :key="item.id"
-            :item="item"
-          />
+          <GoodsItem v-for="item in this.cart" :key="item.id" :item="item" />
         </div>
         <Price />
         <div class="bottom">

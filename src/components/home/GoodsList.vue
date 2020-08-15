@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     goDetail(id) {
-      this.$router.push({path: "/detail", query: {id}});
-    },
+      this.$router.push({ path: "/detail", query: { id } });
+    }
   }
 };
 </script>

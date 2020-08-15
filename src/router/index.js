@@ -25,6 +25,19 @@ const routes = [
   {
     path: "/login",
     component: () => import("../views/Login.vue")
+  },
+  {
+    path: "/address",
+    component: () => import("../views/MyAddress.vue")
+  },
+  {
+    path: "/address/add",
+    component: () => import("../views/EditAddress.vue")
+  },
+  {
+    path: "/address/edit/:id",
+    name: "editAddress",
+    component: () => import("../views/EditAddress.vue")
   }
 ];
 

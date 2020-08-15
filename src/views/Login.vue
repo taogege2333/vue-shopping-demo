@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <Header title="登录界面" showBack />
+    <Header title="登录界面" showBack to="/mine" />
     <div class="login-wrapper">
       <div class="login-form">
         <MyInput class="login-input" v-model.trim="username" />
@@ -8,7 +8,12 @@
         <div class="btns">
           <MyButton
             class="btns-item"
-            v-bind="{text: '登录', bgColor: '#67c23a', color: '#fff', btnClickFunc: handleLogin}"
+            v-bind="{
+              text: '登录',
+              bgColor: '#67c23a',
+              color: '#fff',
+              btnClickFunc: handleLogin
+            }"
           />
           <MyButton class="btns-item" text="注册" border />
         </div>
@@ -35,18 +40,19 @@ export default {
     return {
       username: "王小明",
       password: "123456"
-    }
+    };
   },
   methods: {
     handleLogin() {
       login(this.username, this.password).then(res => {
-        if(res.code === 1) {
+        if (res.code === 1) {
           this.setUser(res.result);
+          localStorage.setItem('user', JSON.stringify(res.result));
           this.$router.push("/mine");
         } else {
           alert(res.result);
         }
-      })
+      });
     }
   }
 };
@@ -74,7 +80,7 @@ export default {
       .btns {
         display: flex;
         @include center;
-        .btns-item+.btns-item {
+        .btns-item + .btns-item {
           margin-left: px2rem(10);
         }
       }

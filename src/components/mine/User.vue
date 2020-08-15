@@ -1,15 +1,20 @@
 <template>
   <div class="user">
-    <div class="user-header">当前用户: {{this.user.username}}</div>
+    <div class="user-header">当前用户: {{ this.user.username }}</div>
     <div class="user-body">
-      <div class="user-body-item">
+      <router-link to="/address" class="user-body-item">
         <span>我的地址</span>
         <span class="iconfont">&#xe601;</span>
-      </div>
+      </router-link>
     </div>
     <MyButton
       class="user-exit"
-      v-bind="{text: '退出登录', color: '#fff', bgColor: '#f56c6c', btnClickFunc: handleExit}"
+      v-bind="{
+        text: '退出登录',
+        color: '#fff',
+        bgColor: '#f56c6c',
+        btnClickFunc: handleExit
+      }"
     />
   </div>
 </template>
@@ -26,6 +31,7 @@ export default {
   methods: {
     handleExit() {
       this.setUser({});
+      localStorage.removeItem("user");
     }
   }
 };
@@ -52,6 +58,7 @@ export default {
       align-items: center;
       border-top: 1px solid #dcdfe6;
       padding: px2rem(10);
+      color: #333;
       &:last-child {
         border-bottom: 1px solid #dcdfe6;
       }

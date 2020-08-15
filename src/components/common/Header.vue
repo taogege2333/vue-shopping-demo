@@ -1,11 +1,7 @@
 <template>
   <header class="header">
-    <div class="title">{{title}}</div>
-    <div
-      class="back iconfont"
-      @click="onBackClick"
-      v-if="showBack"
-    >
+    <div class="title">{{ title }}</div>
+    <div class="back iconfont" @click="onBackClick" v-if="showBack">
       &#xe60f;
     </div>
   </header>
@@ -21,11 +17,17 @@ export default {
     title: {
       type: String,
       default: "我是标题"
+    },
+    to: {
+      type: String,
+      default: ""
     }
   },
   methods: {
     onBackClick() {
-      this.$router.go(-1);
+      if(this.to) {
+        this.$router.push(this.to);
+      }
     }
   }
 };
@@ -38,7 +40,8 @@ export default {
   width: 100vw;
   height: px2rem(48);
   border-bottom: 1px solid $border-color;
-  font-size: px2rem(20);
+  font-size: px2rem(16);
+  font-weight: bold;
   @include center;
   position: fixed;
   top: 0;

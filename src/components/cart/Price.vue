@@ -2,15 +2,15 @@
   <div class="price">
     <p class="row">
       <span class="left">商品总价:</span>
-      <span class="right">￥{{totalPrice | formatPrice}}</span>
+      <span class="right">￥{{ totalPrice | formatPrice }}</span>
     </p>
     <p class="row">
-      <span class="left">运费(满{{freightLimit}}免邮):</span>
-      <span class="right">￥{{freightMoney | formatPrice}}</span>
+      <span class="left">运费(满{{ freightLimit }}免邮):</span>
+      <span class="right">￥{{ freightMoney | formatPrice }}</span>
     </p>
     <p class="row">
       <span class="left">合计:</span>
-      <span class="right">￥{{payment | formatPrice}}</span>
+      <span class="right">￥{{ payment | formatPrice }}</span>
     </p>
   </div>
 </template>
@@ -23,8 +23,8 @@ export default {
   mixins: [commonMixin],
   data() {
     return {
-      freightLimit: FREIGHT_LIMIT,
-    }
+      freightLimit: FREIGHT_LIMIT
+    };
   }
 };
 </script>

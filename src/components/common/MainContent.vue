@@ -2,7 +2,12 @@
   <main
     class="content-wrapper"
     :class="center ? 'center' : ''"
-    :style="{paddingTop: pxToRem(top), paddingBottom: pxToRem(bottom)}"
+    :style="{
+      paddingTop: pxToRem(top),
+      paddingBottom: pxToRem(bottom),
+      backgroundColor: bgColor,
+      zIndex
+    }"
   >
     <slot />
   </main>
@@ -24,6 +29,14 @@ export default {
     center: {
       type: Boolean,
       default: false
+    },
+    bgColor: {
+      type: String,
+      default: ""
+    },
+    zIndex: {
+      type: [String, Number],
+      default: ""
     }
   },
   mixins: [commonMixin]
@@ -36,6 +49,8 @@ export default {
   min-height: 100vh;
   padding: px2rem(49) 0 px2rem(60);
   box-sizing: border-box;
+  background-color: #fff;
+  position: relative;
   &.center {
     @include center;
   }
