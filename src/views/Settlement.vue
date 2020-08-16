@@ -14,23 +14,25 @@
       </div>
       <div class="address">
         <span class="label">地址:</span>
-        <div class="select" @click="handleSwitchOption">{{addressList[currentIndex].receiver + addressList[currentIndex].phone + addressList[currentIndex].address}}</div>
+        <div class="select" @click="handleSwitchOption">{{currentAddress}}</div>
         <i
           class="iconfont icon-arrow-right"
           :class="showOptions ? 'up' : 'down'"
           @click="handleSwitchOption"
         ></i>
-        <div class="options" v-show="showOptions">
-          <div
-            class="options-item"
-            :class="currentIndex === index ? 'selected' : ''"
-            v-for="(item, index) in addressList"
-            :key="item.id"
-            @click="handleSelectOption(index)"
-          >
-            {{item.receiver + item.phone + item.address}}
+        <transition name="slide-down">
+          <div class="options" v-show="showOptions" ref="options">
+            <div
+              class="options-item"
+              :class="currentIndex === index ? 'selected' : ''"
+              v-for="(item, index) in addressList"
+              :key="item.id"
+              @click="handleSelectOption(index)"
+            >
+              {{item.receiver + item.phone + item.address}}
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
     </MainContent>
     <div class="payment">
@@ -65,6 +67,11 @@ export default {
       showOptions: false
     }
   },
+  computed: {
+    currentAddress() {
+      return this.addressList[this.currentIndex] ? this.addressList[this.currentIndex].receiver + this.addressList[this.currentIndex].phone + this.addressList[this.currentIndex].address : '';
+    }
+  },
   methods: {
     handleSelectOption(index) {
       this.currentIndex = index;
@@ -72,6 +79,10 @@ export default {
     },
     handleSwitchOption() {
       this.showOptions = !this.showOptions;
+      if(this.showOptions) {
+        const options = this.$refs.options;
+        console.log(options.offsetHeight);
+      }
     },
     handleClickPay() {
       this.clearCart();
@@ -142,6 +153,7 @@ export default {
       width: 100vw; 
       background-color: #fff;
       border-top: 1px solid $border-color;
+      transform-origin: left top;
       .options-item {
         padding: px2rem(10) px2rem(10);
         line-height: px2rem(20);
@@ -152,7 +164,7 @@ export default {
       }
     }
     .iconfont {
-      transition: all .3s;
+      transition: all .2s;
       &.up {
         transform: rotateZ(-90deg);
       }
