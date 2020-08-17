@@ -9,7 +9,7 @@
         </div>
         <Price />
         <div class="bottom">
-          <div class="settle" @click="$router.push('/settlement')">去结算</div>
+          <div class="settle" @click="handleGoSettle">去结算</div>
         </div>
       </div>
     </MainContent>
@@ -30,7 +30,16 @@ export default {
     GoodsItem,
     Price
   },
-  mixins: [commonMixin]
+  mixins: [commonMixin],
+  methods: {
+    handleGoSettle() {
+      if(this.user.id) {
+        this.$router.push("/settlement");
+      } else {
+        this.$router.push("/login");
+      }
+    }
+  }
 };
 </script>
 
